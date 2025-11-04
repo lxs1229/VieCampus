@@ -1,15 +1,32 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+# OS
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Gradle
+.gradle/
+.gradle-home/
+*.log
+
+# Build outputs
+build/
+out/
+*/build/
+
+# Java/Kotlin
+*.class
+*.jar
+*.war
+*.ear
+
+# Android（如有）
 local.properties
+.cxx/
+captures/
+outputs/
+
+# Others
+Thumbs.db
