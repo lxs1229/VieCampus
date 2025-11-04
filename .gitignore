@@ -30,3 +30,14 @@ outputs/
 
 # Others
 Thumbs.db
+.gradle/
+.gradle-home/
+build/
+out/
+*/build/
+*.log
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
