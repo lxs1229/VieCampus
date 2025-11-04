@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="course_days">
+        <item>@string/day_monday</item>
+        <item>@string/day_tuesday</item>
+        <item>@string/day_wednesday</item>
+        <item>@string/day_thursday</item>
+        <item>@string/day_friday</item>
+        <item>@string/day_saturday</item>
+        <item>@string/day_sunday</item>
+    </string-array>
+
+    <string-array name="task_type_options">
+        <item>@string/task_type_todo</item>
+        <item>@string/task_type_assignment</item>
+        <item>@string/task_type_exam</item>
+    </string-array>
+</resources>

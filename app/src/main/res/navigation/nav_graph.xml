@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/scheduleFragment">
+
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.example.viecampus.ui.schedule.ScheduleFragment"
+        android:label="@string/title_schedule" />
+
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.example.viecampus.ui.tasks.TasksFragment"
+        android:label="@string/title_tasks" />
+
+    <fragment
+        android:id="@+id/gpaFragment"
+        android:name="com.example.viecampus.ui.gpa.GpaFragment"
+        android:label="@string/title_gpa" />
+</navigation>
