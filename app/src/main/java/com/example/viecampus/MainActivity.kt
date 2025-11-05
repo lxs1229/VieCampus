@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -41,6 +42,12 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val showNavigation = destination.id != R.id.loginFragment
+            binding.bottomNavigation.isVisible = showNavigation
+            binding.topAppBar.isVisible = showNavigation
+        }
 
         requestNotificationPermissionIfNeeded()
     }

@@ -3,6 +3,14 @@
     <string name="title_schedule">Emploi du temps</string>
     <string name="title_tasks">Tâches</string>
     <string name="title_gpa">GPA</string>
+    <string name="login_title">Connexion</string>
+    <string name="login_subtitle">Accédez à votre espace étudiant pour gérer votre vie sur le campus.</string>
+    <string name="login_email">Adresse e-mail</string>
+    <string name="login_password">Mot de passe</string>
+    <string name="login_action">Se connecter</string>
+    <string name="login_hint">Pour cette démonstration, utilisez n\'importe quelle adresse e-mail valide et un mot de passe de 6 caractères ou plus.</string>
+    <string name="login_error_email">Veuillez saisir une adresse e-mail valide.</string>
+    <string name="login_error_password">Le mot de passe doit contenir au moins %1$d caractères.</string>
     <string name="schedule_empty_state">Aucun cours pour le moment. Touchez le bouton en bas à droite pour en ajouter un.</string>
     <string name="tasks_empty_state">Aucune tâche pour le moment. Touchez le bouton en bas à droite pour en créer une.</string>
     <string name="gpa_empty_state">Ajoutez des notes de cours pour calculer votre GPA.</string>
