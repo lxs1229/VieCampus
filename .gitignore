@@ -1,43 +1,32 @@
 # OS
 .DS_Store
+Thumbs.db
 
 # IDE
 .idea/
 *.iml
 .vscode/
 
-# Gradle
+# Gradle caches & logs
 .gradle/
 .gradle-home/
 *.log
 
 # Build outputs
-build/
+/build/
 out/
 */build/
 
-# Java/Kotlin
-*.class
-*.jar
-*.war
-*.ear
-
-# Android（如有）
+# Android/NDK
 local.properties
 .cxx/
+.externalNativeBuild/
 captures/
 outputs/
 
-# Others
-Thumbs.db
-.gradle/
-.gradle-home/
-build/
-out/
-*/build/
-*.log
-.idea/
-*.iml
-.vscode/
-.DS_Store
-Thumbs.db
+# Java/Kotlin classes
+*.class
+
+# Allow these jars (do not ignore):
+!gradle/wrapper/gradle-wrapper.jar
+!app/libs/*.jar
