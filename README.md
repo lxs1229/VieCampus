@@ -36,7 +36,7 @@ Assistant mobile pour la vie étudiante : gestion du planning, tâches + rappe
 ## Démarrage rapide
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/lxs1229/VieCampus
 cd VieCampus
 # Vérifier que local.properties pointe vers un SDK Android valide
 ./gradlew assembleDebug
