@@ -1,59 +1,62 @@
 # VieCampus
 
-Application Android permettant aux étudiants de gérer leur vie sur le campus : emploi du temps, tâches (devoirs, examens, to‑do), calcul du GPA et rappels via notifications locales.
+Assistant mobile pour la vie étudiante : gestion du planning, tâches + rappels locaux, calcul du GPA et écran de connexion (sans backend). Données stockées en local avec Room, rappels gérés par WorkManager.
 
-## Fonctionnalités
+## Points clés
 
-- **Emploi du temps** : enregistrement des cours (jour, horaires, salle, enseignant, notes) avec affichage trié et possibilité d’ajouter/modifier/supprimer.
-- **Tâches et rappels** : gestion des tâches avec statut (à faire, en cours, terminé), types (tâche, devoir, examen), échéances et rappels automatiques via WorkManager + notifications.
-- **Calcul du GPA** : ajout de notes et crédits pour obtenir automatiquement le GPA courant.
-- **Persistance locale** : toutes les données (cours, tâches) sont stockées via Room.
-- **Interface moderne** : navigation par onglets inférieurs, dialogs Material Design, prise en charge des appareils récents (SDK 36).
+- **Emploi du temps** : cours par jour/créneau, ajout/édition/suppression, notes et enseignant optionnels.
+- **Tâches & rappels** : trois types (todo, devoir, examen) avec statut (à faire / en cours / terminé), échéance facultative et notification locale programmée.
+- **GPA** : saisie des notes (échelle 0‑20) et crédits pour calculer le GPA courant.
+- **Connexion** : validation basique email/mot de passe puis accès aux onglets principaux (prêt à être branché à une vraie auth).
+- **Notifications** : demande de permission sur Android 13+, WorkManager + NotificationCompat pour déclencher les rappels et rediriger vers la liste des tâches.
+
+## Stack technique
+
+- Kotlin + ViewBinding, composants Material, Navigation (NavHost + BottomNavigation).
+- Room (entités/DAO/Repository) pour la persistance ; LiveData/Flow pour alimenter l’UI.
+- WorkManager + NotificationCompat pour les notifications locales.
+- Coroutines (Dispatchers.IO) pour le travail hors UI.
+
+## Structure
+
+- `app/src/main/java/com/example/viecampus/`
+  - `ui/` : `schedule` (planning), `tasks` (tâches/rappels), `gpa`, `auth` (connexion) avec fragments, ViewModels et adaptateurs.
+  - `data/` : `entity`, `dao`, `CampusRepository`, `CampusDatabase`.
+  - `reminders/` & `notifications/` : planification et canaux de notification.
+  - `MainActivity` : héberge le NavHost, gère la permission de notification, affiche/masque app bar + bottom bar selon la destination.
+- `app/src/main/res/` : layouts, navigation, menus, chaînes, valeurs.
 
 ## Prérequis
 
-- JDK 21 (ou 17) – ne pas utiliser JDK 25 qui n’est pas supporté par AGP/Kotlin actuels.
 - Android Studio Jellyfish ou plus récent.
-- Gradle Wrapper fourni dans le projet (`./gradlew`).
+- JDK 17+ (AGP 8.13) ; cible bytecode Java 11.
+- SDK Android 36 (`compileSdk` / `targetSdk` / `minSdk` = 36 ; utiliser un émulateur ou appareil Android 15).
+- Utiliser le Gradle Wrapper fourni (`./gradlew`).
 
 ## Démarrage rapide
 
 ```bash
-git clone https://github.com/lxs1229/VieCampus.git
+git clone <url-du-repo>
 cd VieCampus
-./gradlew clean assembleDebug
+# Vérifier que local.properties pointe vers un SDK Android valide
+./gradlew assembleDebug
 ```
 
-> Ajustez `JAVA_HOME` si nécessaire :  
-> `export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home`
+- APK générée : `app/build/outputs/apk/debug/app-debug.apk`.
+- Première ouverture : l’écran de connexion accepte toute adresse email valide + mot de passe ≥ 6 caractères.
+- Android 13+ : accepter la permission de notifications pour que les rappels s’affichent.
 
-Installez ensuite l’APK générée (`app/build/outputs/apk/debug/app-debug.apk`) sur un appareil ou un émulateur.
-
-## Structure principale
-
-- `app/src/main/java/com/example/viecampus/`
-  - `MainActivity` : shell de navigation et gestion des permissions de notifications.
-  - `data/` : entités, DAO, base Room et repository.
-  - `ui/schedule`, `ui/tasks`, `ui/gpa` : fragments, viewmodels et adaptateurs pour chaque module.
-  - `reminders/` : worker WorkManager et planificateur de notifications.
-- `app/src/main/res/` : ressources XML (layouts, menus, navigation, valeurs).
-
-## Tests & qualité
-
-Pour une exécution complète des tests unitaires :
+## Tests
 
 ```bash
 ./gradlew test
 ```
 
-Vous pouvez ajouter vos propres tests instrumentés dans `app/src/androidTest`.
+Ajoutez vos tests instrumentés dans `app/src/androidTest` si nécessaire.
 
 ## Personnalisation
 
-- Adapter les chaînes dans `app/src/main/res/values/strings.xml`.
-- Modifier les schémas Room (entités & DAOs) si de nouvelles données doivent être stockées.
-- Ajouter d’autres types de rappels en créant de nouveaux Workers ou canaux de notification.
+- Textes : modifier `app/src/main/res/values/strings.xml`.
+- Modèle de données : ajuster `data/entity` + DAO/Repository puis mettre à jour l’UI.
+- Rappels : adapter la logique/format dans `reminders/ReminderScheduler` et `TaskReminderWorker`.
 
-## Licence
-
-Projet interne / académique – adaptez la licence selon vos besoins.
