@@ -19,7 +19,7 @@ Application Android permettant aux étudiants de gérer leur vie sur le campus 
 ## Démarrage rapide
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/lxs1229/VieCampus.git
 cd VieCampus
 ./gradlew clean assembleDebug
 ```
