@@ -38,7 +38,6 @@ class GpaAdapter(
             info.text = itemView.context.getString(
                 R.string.gpa_course_info_format,
                 course.score,
-                course.gradePoint,
                 course.credits
             )
             itemView.setOnClickListener { onCourseClick(course) }

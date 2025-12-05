@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:title="@string/app_name"
+        android:background="@color/vc_primary"
+        app:titleTextColor="@color/vc_on_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

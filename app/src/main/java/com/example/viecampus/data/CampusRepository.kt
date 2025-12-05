@@ -1,8 +1,10 @@
 package com.example.viecampus.data
 
 import com.example.viecampus.data.dao.CourseDao
+import com.example.viecampus.data.dao.GpaCourseDao
 import com.example.viecampus.data.dao.TaskDao
 import com.example.viecampus.data.entity.CourseEntity
+import com.example.viecampus.data.entity.GpaCourseEntity
 import com.example.viecampus.data.entity.TaskEntity
 import com.example.viecampus.model.TaskStatus
 import com.example.viecampus.model.TaskType
@@ -12,11 +14,13 @@ import kotlinx.coroutines.withContext
 
 class CampusRepository(
     private val courseDao: CourseDao,
-    private val taskDao: TaskDao
+    private val taskDao: TaskDao,
+    private val gpaCourseDao: GpaCourseDao
 ) {
 
     val courses: Flow<List<CourseEntity>> = courseDao.getCourses()
     val tasks: Flow<List<TaskEntity>> = taskDao.getTasks()
+    val gpaCourses: Flow<List<GpaCourseEntity>> = gpaCourseDao.getCourses()
 
     suspend fun addCourse(course: CourseEntity): Long = withContext(Dispatchers.IO) {
         courseDao.insert(course)
@@ -52,5 +56,17 @@ class CampusRepository(
 
     suspend fun getUpcomingReminders(now: Long): List<TaskEntity> = withContext(Dispatchers.IO) {
         taskDao.getUpcomingReminders(now, TaskStatus.DONE, TaskType.ASSIGNMENT, TaskType.EXAM)
+    }
+
+    suspend fun addGpaCourse(course: GpaCourseEntity): Long = withContext(Dispatchers.IO) {
+        gpaCourseDao.insert(course)
+    }
+
+    suspend fun updateGpaCourse(course: GpaCourseEntity) = withContext(Dispatchers.IO) {
+        gpaCourseDao.update(course)
+    }
+
+    suspend fun deleteGpaCourse(id: Long) = withContext(Dispatchers.IO) {
+        gpaCourseDao.deleteById(id)
     }
 }

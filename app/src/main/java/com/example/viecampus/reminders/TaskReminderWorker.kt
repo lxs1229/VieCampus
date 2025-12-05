@@ -4,7 +4,9 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.annotation.RequiresPermission
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 
 import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
@@ -14,6 +16,7 @@ import androidx.navigation.NavDeepLinkBuilder
 import com.example.viecampus.R
 import com.example.viecampus.data.CampusDatabase
 import com.example.viecampus.data.CampusRepository
+import com.example.viecampus.data.entity.TaskEntity
 import com.example.viecampus.model.TaskStatus
 import com.example.viecampus.model.TaskType
 import com.example.viecampus.notifications.NotificationHelper
@@ -28,9 +31,10 @@ class TaskReminderWorker(
 
     private val repository: CampusRepository by lazy {
         val database = CampusDatabase.getInstance(appContext)
-        CampusRepository(database.courseDao(), database.taskDao())
+        CampusRepository(database.courseDao(), database.taskDao(), database.gpaCourseDao())
     }
 
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     override suspend fun doWork(): Result {
         val taskId = inputData.getLong(KEY_TASK_ID, -1L)
         if (taskId <= 0) return Result.failure()
@@ -51,7 +55,8 @@ class TaskReminderWorker(
         return Result.success()
     }
 
-    private fun showNotification(task: com.example.viecampus.data.entity.TaskEntity) {
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
+    private fun showNotification(task: TaskEntity) {
         val pendingIntent = NavDeepLinkBuilder(applicationContext)
             .setGraph(R.navigation.nav_graph)
             .setDestination(R.id.tasksFragment)

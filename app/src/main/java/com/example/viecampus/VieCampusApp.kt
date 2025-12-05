@@ -17,6 +17,6 @@ class VieCampusApp : Application() {
     }
 
     val repository: CampusRepository by lazy {
-        CampusRepository(database.courseDao(), database.taskDao())
+        CampusRepository(database.courseDao(), database.taskDao(), database.gpaCourseDao())
     }
 }

@@ -1,9 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.VieCampus" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.VieCampus" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/vc_primary</item>
+        <item name="colorOnPrimary">@color/vc_on_primary</item>
+        <item name="colorSecondary">@color/vc_secondary</item>
+        <item name="colorSurface">@color/vc_surface</item>
+        <item name="colorSurfaceVariant">@color/vc_surface_alt</item>
+        <item name="android:colorBackground">@color/vc_background</item>
+        <item name="colorOnSurface">@color/vc_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/vc_text_secondary</item>
+        <item name="android:statusBarColor">@color/vc_primary</item>
+        <item name="android:navigationBarColor">@color/vc_surface</item>
+        <item name="android:windowBackground">@color/vc_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="toolbarStyle">@style/VieCampus.Toolbar</item>
     </style>
 
     <style name="Theme.VieCampus" parent="Base.Theme.VieCampus" />
+
+    <style name="VieCampus.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/vc_primary</item>
+        <item name="titleTextColor">@color/vc_on_primary</item>
+        <item name="subtitleTextColor">@color/vc_on_primary</item>
+        <item name="android:elevation">0dp</item>
+    </style>
 </resources>

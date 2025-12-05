@@ -30,20 +30,20 @@
         app:layout_constraintTop_toBottomOf="@id/loginTitle" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loginEmailLayout"
+        android:id="@+id/loginUsernameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="@string/login_email"
+        android:hint="@string/login_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginSubtitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginEmailInput"
+            android:id="@+id/loginUsernameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:singleLine="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +56,7 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginEmailLayout">
+        app:layout_constraintTop_toBottomOf="@id/loginUsernameLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginPasswordInput"
@@ -87,5 +87,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
+
+    <WebView
+        android:id="@+id/casWebView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginHint" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

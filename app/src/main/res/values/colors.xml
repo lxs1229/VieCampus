@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- App palette inspired by the provided UI mock. -->
+    <color name="vc_primary">#1C4D89</color>
+    <color name="vc_on_primary">#FFFFFFFF</color>
+    <color name="vc_secondary">#5D8EEB</color>
+    <color name="vc_surface">#F6F8FC</color>
+    <color name="vc_surface_alt">#E9EEF9</color>
+    <color name="vc_background">#F6F8FC</color>
+    <color name="vc_text_primary">#1F2933</color>
+    <color name="vc_text_secondary">#5A6472</color>
 </resources>
